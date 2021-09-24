@@ -32,7 +32,8 @@ search.onkeyup = function () {
 	console.log('searchFilterPrice', searchFilterPrice);
 
 	if (searchFilterPrice.length === 0) {
-		document.querySelector('.products').innerHTML = 'No Products available';
+		document.querySelector('.products').innerHTML =
+			'<h2>No products available</h2>';
 		return;
 	}
 
