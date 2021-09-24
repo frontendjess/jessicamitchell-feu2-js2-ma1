@@ -11,8 +11,8 @@ const loading = document.querySelector('.loading');
 data.forEach((product) => {
 	loading.innerHTML = '';
 	HTML += `<div class="product-info">
-									<h2>${product.title}</h2>
-									<p>${product.price}</p>
+									<h2>Product: ${product.title}</h2>
+									<p>Price: ${product.price}</p>
 							</div>`;
 });
 
@@ -31,9 +31,14 @@ search.onkeyup = function () {
 	let searchFilterPrice = filteringAnArray(data, search.value);
 	console.log('searchFilterPrice', searchFilterPrice);
 
+	if (searchFilterPrice.length === 0) {
+		document.querySelector('.products').innerHTML = 'No Products available';
+		return;
+	}
+
 	for (let i = 0; i < searchFilterPrice.length; i++) {
 		document.querySelector(
 			'.products'
-		).innerHTML += `<div>${searchFilterPrice[i].title} ${searchFilterPrice[i].price}</div>`;
+		).innerHTML += `<div><h2>Product: ${searchFilterPrice[i].title}</h2> <p>Price: ${searchFilterPrice[i].price}</p></div>`;
 	}
 };
